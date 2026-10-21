@@ -541,6 +541,100 @@ audio.addEventListener("pause", () => {
 });
 
 
+
+/* =========================================
+   SWISS UPLOAD MENU
+========================================= */
+
+const addMusicButton = document.getElementById("library-toggle");
+const uploadMenu = document.getElementById("upload-menu");
+
+const uploadFormContainer = document.getElementById("upload-form-container");
+const musicUploadForm = document.getElementById("music-upload-form");
+const uploadFormTitle = document.getElementById("upload-form-title");
+const uploadTitle = document.getElementById("upload-title");
+const uploadArtist = document.getElementById("upload-artist");
+const uploadFile = document.getElementById("upload-file");
+const uploadStatus = document.getElementById("upload-status");
+const cancelUploadButton = document.getElementById("cancel-upload");
+
+let selectedUploadType = "song";
+
+if (addMusicButton && uploadMenu) {
+    addMusicButton.addEventListener("click", () => {
+        uploadMenu.hidden = !uploadMenu.hidden;
+    });
+
+    document.querySelectorAll(".upload-option").forEach(option => {
+        option.addEventListener("click", () => {
+            selectedUploadType = option.dataset.uploadType;
+
+            const titles = {
+                song: "Upload a Song",
+                video: "Upload Music Video",
+                podcast: "Publish a Podcast"
+            };
+
+            uploadFormTitle.textContent =
+                titles[selectedUploadType] || "Upload to Swiss";
+
+            uploadFile.accept =
+                selectedUploadType === "video"
+                    ? "video/*"
+                    : "audio/*";
+
+            uploadFile.value = "";
+            uploadTitle.value = "";
+            uploadArtist.value = "";
+            uploadStatus.textContent = "";
+
+            uploadMenu.hidden = true;
+            uploadFormContainer.hidden = false;
+        });
+    });
+
+    document.addEventListener("click", event => {
+        if (
+            !uploadMenu.contains(event.target) &&
+            !addMusicButton.contains(event.target)
+        ) {
+            uploadMenu.hidden = true;
+        }
+    });
+}
+
+cancelUploadButton.addEventListener("click", () => {
+    uploadFormContainer.hidden = true;
+    musicUploadForm.reset();
+    uploadStatus.textContent = "";
+});
+
+musicUploadForm.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const title = uploadTitle.value.trim();
+    const artist = uploadArtist.value.trim();
+    const file = uploadFile.files[0];
+
+    if (!title || !artist || !file) {
+        uploadStatus.textContent = "Please fill in every field.";
+        return;
+    }
+
+    uploadStatus.textContent =
+        `Selected "${file.name}" successfully!`;
+
+    console.log("Swiss upload details:", {
+        type: selectedUploadType,
+        title,
+        artist,
+        fileName: file.name,
+        fileSize: file.size
+    });
+});
+
+
+
 // =========================================
 // INITIALIZE SWISS
 // =========================================

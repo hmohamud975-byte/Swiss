@@ -1820,3 +1820,88 @@ input:focus-visible {
     }
 }
 
+
+/* Swiss upload menu */
+.upload-menu {
+    position: absolute;
+    z-index: 1000;
+    width: 290px;
+    padding: 20px;
+    background: #101426;
+    border: 1px solid rgba(100, 149, 255, 0.35);
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    color: #f5f6ff;
+    animation: swissMenuIn 0.2s ease-out;
+}
+
+.upload-menu[hidden] {
+    display: none;
+}
+
+.upload-menu h3 {
+    margin: 0 0 6px;
+    color: #ffffff;
+}
+
+.upload-menu p {
+    margin: 0 0 16px;
+    color: #aeb6d1;
+    font-size: 13px;
+}
+
+.upload-option {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+    padding: 13px 10px;
+    margin-top: 6px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    color: #f5f6ff;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.upload-option > i {
+    width: 24px;
+    color: #70a7ff;
+    font-size: 19px;
+    text-align: center;
+}
+
+.upload-option span {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.upload-option strong {
+    font-size: 14px;
+}
+
+.upload-option small {
+    color: #aeb6d1;
+    font-size: 11px;
+}
+
+.upload-option:hover {
+    background: rgba(91, 113, 255, 0.14);
+    border-color: rgba(115, 139, 255, 0.4);
+    transform: translateX(3px);
+}
+
+@keyframes swissMenuIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

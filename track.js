@@ -11,7 +11,7 @@ const tracks = [
     }, 
     {
         id: 2,
-        title: "billionare",
+        title: "Billionare",
         artist: "BabyMons7er",
         album: "After Hours",
         genre: "K-Pop",
@@ -21,7 +21,7 @@ const tracks = [
     },
     {
         id: 3,
-        title: "gabriela",
+        title: "Gabriela",
         artist: "Katseye",
         album: "Unorthodox Jukebox",
         genre: "Pop",
