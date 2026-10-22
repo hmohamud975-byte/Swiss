@@ -1905,3 +1905,320 @@ input:focus-visible {
         transform: translateY(0);
     }
 }
+
+
+/* =========================================
+   SWISS UPLOAD DASHBOARD — FINAL DESIGN
+========================================= */
+
+#upload-form-container[hidden],
+#upload-menu[hidden] {
+    display: none !important;
+}
+
+#upload-form-container:not([hidden]) {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 99999 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 100vw !important;
+    height: 100dvh !important;
+    padding: 20px !important;
+    margin: 0 !important;
+
+    overflow-y: auto;
+    background: rgba(2, 7, 20, 0.82);
+    backdrop-filter: blur(12px);
+}
+
+#music-upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+
+    width: min(100%, 440px);
+    max-height: calc(100dvh - 40px);
+    overflow-y: auto;
+    padding: clamp(22px, 4vw, 34px);
+
+    color: #edf5ff;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(155, 139, 255, 0.17),
+            transparent 45%
+        ),
+        linear-gradient(145deg, #152747, #080f21);
+
+    border: 1px solid rgba(247, 201, 104, 0.55);
+    border-radius: 26px;
+    box-shadow:
+        0 25px 90px rgba(0, 0, 0, 0.55),
+        0 0 35px rgba(75, 155, 255, 0.12);
+
+    animation: swissUploadEnter 0.25s ease-out;
+}
+
+#music-upload-form h2 {
+    margin-bottom: 10px;
+    color: #f7c968;
+    font-size: clamp(1.6rem, 5vw, 2.1rem);
+    text-align: center;
+}
+
+#music-upload-form label {
+    margin-top: 5px;
+    color: #c4d5f2;
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+#music-upload-form input {
+    width: 100%;
+    min-width: 0;
+    padding: 13px 14px;
+
+    color: #edf5ff;
+    background: rgba(5, 13, 30, 0.85);
+    border: 1px solid rgba(140, 186, 255, 0.25);
+    border-radius: 12px;
+}
+
+#music-upload-form input:focus {
+    border-color: #f7c968;
+    outline: 2px solid rgba(247, 201, 104, 0.15);
+}
+
+#music-upload-form input[type="file"] {
+    padding: 10px;
+    font-size: 0.85rem;
+}
+
+#music-upload-form button {
+    min-height: 46px;
+    padding: 12px 18px;
+
+    border: 0;
+    border-radius: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+}
+
+#music-upload-form button[type="submit"] {
+    margin-top: 12px;
+    color: #101629;
+    background: linear-gradient(110deg, #ffe7a3, #f7c968);
+    box-shadow: 0 7px 22px rgba(247, 201, 104, 0.16);
+}
+
+#music-upload-form #cancel-upload {
+    color: #e3eaff;
+    background: rgba(140, 186, 255, 0.12);
+    border: 1px solid rgba(140, 186, 255, 0.22);
+}
+
+#music-upload-form button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+#upload-status {
+    min-height: 20px;
+    overflow-wrap: anywhere;
+    color: #a9caff;
+    font-size: 0.88rem;
+    text-align: center;
+}
+
+@keyframes swissUploadEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 480px) {
+    #upload-form-container:not([hidden]) {
+        padding: 12px !important;
+    }
+
+    #music-upload-form {
+        max-height: calc(100dvh - 24px);
+        padding: 22px 18px;
+        border-radius: 20px;
+    }
+}
+
+
+/* =========================================
+   SWISS POSTS & UPLOAD SUCCESS
+========================================= */
+
+.swiss-profile-posts {
+    margin: 35px 0;
+    padding: 24px;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 22px;
+    background: linear-gradient(
+        135deg,
+        rgba(21, 29, 50, 0.96),
+        rgba(35, 25, 64, 0.88)
+    );
+}
+
+.swiss-profile-posts h2 {
+    color: #f3d477;
+    margin: 0 0 18px;
+}
+
+#swiss-profile-post-list {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 250px), 1fr)
+    );
+    gap: 18px;
+}
+
+.swiss-post-card {
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    background: rgba(7, 16, 35, 0.8);
+    color: #f5f5ff;
+    overflow-wrap: anywhere;
+}
+
+.swiss-post-card h3 {
+    margin: 12px 0 5px;
+    color: #f3d477;
+}
+
+.swiss-post-card p {
+    color: #c6c8dc;
+}
+
+.swiss-post-card > span {
+    color: #b8a1ff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.swiss-post-media {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 14px;
+    border-radius: 10px;
+}
+
+.swiss-upload-toast {
+    position: fixed;
+    z-index: 9999;
+    bottom: 100px;
+    left: 50%;
+    transform: translate(-50%, 15px);
+    padding: 14px 22px;
+    border: 1px solid rgba(243, 212, 119, 0.4);
+    border-radius: 14px;
+    background: #111a30;
+    color: #f3d477;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+}
+
+.swiss-upload-toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+
+/* =========================================
+   SWISS ALBUM COVER UPLOAD
+========================================= */
+
+.album-cover-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.album-cover-upload label {
+    color: #f5d77b;
+    font-weight: 600;
+}
+
+.cover-preview-container {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px dashed #b69cff;
+    border-radius: 16px;
+    background: #151d32;
+    color: #c9b7ff;
+    text-align: center;
+}
+
+#upload-cover-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#upload-cover-preview[hidden] {
+    display: none;
+}
+.lyrics-panel {
+    background: #151d32;
+    border: 1px solid #343b58;
+    border-radius: 18px;
+    padding: 24px;
+    color: #fff;
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.lyrics-panel h2 {
+    color: #f5d77b;
+    margin-top: 0;
+}
+
+#lyrics-status {
+    color: #b9bfd2;
+}
+
+#lyrics-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.lyric-line {
+    color: #929ab2;
+    font-size: 18px;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.lyric-line.active {
+    color: #f5d77b;
+    font-weight: 700;
+    transform: scale(1.02);
+}
